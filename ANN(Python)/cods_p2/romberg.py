@@ -23,9 +23,9 @@ def f(x):
     return math.exp(-x*x)
 
 a,b = [0, 1]
-
 h = 0.5
 k = 8
+
 hs = [h / 2 ** i for i in range(k)]
 col1 = [trapz(f,a,b,hi) for hi in hs]
 print('F_1',col1)

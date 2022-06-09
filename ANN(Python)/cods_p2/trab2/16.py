@@ -2,6 +2,11 @@ import numpy as np
 
 #BEST_POLY
 
+'''
+Um pesquisador relatou os dados tabulados a seguir de um experimento realizado para determinar a taxa de crescimento k (por dia)
+de bactérias como uma função da concentração de oxigênio c (em mg/L).
+'''
+
 def best_poly(x, y, grau=1):
     k = grau + 1
     A = [[0 for _ in range(k)] for _ in range(k)]

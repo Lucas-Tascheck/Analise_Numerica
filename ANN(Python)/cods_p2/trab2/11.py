@@ -2,6 +2,15 @@ import numpy as np
 
 #BEST_EXP
 
+'''
+Encontre os coeficientes a e b da função exponencial y=aebx que melhor se aproxima da seguinte lista de 12 pontos
+(0.1108,5.6869)
+, (0.3323,9.5643), (0.3849,9.2412), (0.5644,12.8301), (0.6762,18.6405), (0.9608,33.0995), (1.0203,35.8162), (1.3164,64.0706), (1.4996,92.8868), (1.5227,95.3317), (1.6749,128.9468) e (1.9595,221.9305)
+Em seguida, calcule o valor de y para os seguintes valores de x:
+x1=1.0355
+, x2=1.2819 e x3=1.6745
+'''
+
 def best_poly(x, y, grau=1):
     k = grau + 1
     A = [[0 for _ in range(k)] for _ in range(k)]

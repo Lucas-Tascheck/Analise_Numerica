@@ -2,6 +2,11 @@ import numpy as np
 
 #BEST_EXP
 
+'''
+Encontre os coeficientes a e b da função exponencial y=a2bx que melhor se aproxima da seguinte lista de 36 pontos
+(0.049,5.2176)...
+'''
+
 def best_poly(x, y, grau=1):
     k = grau + 1
     A = [[0 for _ in range(k)] for _ in range(k)]

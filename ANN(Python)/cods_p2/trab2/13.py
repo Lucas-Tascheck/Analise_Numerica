@@ -2,6 +2,11 @@ import numpy as np
 
 #BEST_POT
 
+'''
+Encontre os coeficientes a e b da função potência y=axb que melhor se aproxima da seguinte lista de 12 pontos
+(0.6168,1.2651)...
+'''
+
 def best_poly(x, y, grau=1):
     k = grau + 1
     A = [[0 for _ in range(k)] for _ in range(k)]

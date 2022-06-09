@@ -3,6 +3,16 @@ import numpy as np
 
 #BEST_EXP
 
+'''
+Um pesquisador relatou os dados tabulados a seguir.
+Sabe-se que tais dados podem ser modelados pela seguinte equação: 
+x=e(y-b)/a
+onde a e b são parâmetros. 
+Use uma transformação para linearizar essa equação e use regressão linear para encontrar os valores de a e b. 
+Em seguida, calcule o valor de y para os seguintes valores de x:
+'''
+
+
 def best_poly(x, y, grau=1):
     k = grau + 1
     A = [[0 for _ in range(k)] for _ in range(k)]

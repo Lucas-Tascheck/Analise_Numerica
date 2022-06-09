@@ -2,6 +2,11 @@ import numpy as np
 
 #BEST_POLY
 
+'''
+Encontre os coeficientes a e b da função taxa de crescimento da saturação y=axx+b que melhor se aproxima da seguinte lista de 12 pontos
+(2.106,0.8735)...
+'''
+
 def best_poly(x, y, grau=1):
     k = grau + 1
     A = [[0 for _ in range(k)] for _ in range(k)]

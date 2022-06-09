@@ -5,6 +5,15 @@ import numpy as np
 #FUNC EQUIVALENTE
 # sqrt( y ) = 1/b + a/b * 1/sqrt( x )
 
+'''
+Um pesquisador relatou os dados tabulados a seguir.
+Sabe-se que tais dados podem ser modelados pela seguinte equação: 
+y=(a+x-√bx-√)2
+onde a e b são parâmetros. 
+Use uma transformação para linearizar essa equação e use regressão linear para encontrar os valores de a e b. 
+Em seguida, calcule o valor de y para os seguintes valores de x:
+'''
+
 def best_poly(x, y, grau=1):
     k = grau + 1
     A = [[0 for _ in range(k)] for _ in range(k)]
@@ -46,9 +55,9 @@ def modelo(x):
 if __name__ == '__main__':
     
 
-    x = [1.1749, 1.5091, 2.3688, 2.9909, 4.2278, 4.8339, 5.8841, 6.6987, 7.4996, 8.1111, 9.2025, 9.4151]
-    y = [4.7513, 4.01, 2.9694, 2.572, 1.9765, 1.8481, 1.6713, 1.5639, 1.4642, 1.3462, 1.1869, 1.2741]
-    values = [3.7007, 5.1163, 8.2032]
+    x = [0.5923, 1.4755, 2.7423, 2.8784, 4.3162, 5.0501, 5.8835, 6.3047, 6.9618, 7.9373, 8.7276, 9.8161]
+    y = [20.4277, 9.6109, 5.8932, 5.7772, 4.2956, 3.6791, 3.4509, 3.3288, 3.0964, 2.9156, 2.7063, 2.6095]
+    values = [1.9568, 7.5541, 8.2874]
 
     y_ = np.sqrt(y)
     

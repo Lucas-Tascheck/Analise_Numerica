@@ -1,6 +1,12 @@
 import random
 import numpy as np
 import math
+
+'''
+De acordo com o teorema de Taylor, toda função n+1 vezes derivável pode ser aproximada por um polinômio de grau n, 
+mais precisamente, se f é n+1 vezes derivável num ponto x0, então para todo x suficientemente próximo de x0, existe um c, entre x e x0, tal que 
+'''
+
 def prod(lst):
     p = 1
     for i in lst:

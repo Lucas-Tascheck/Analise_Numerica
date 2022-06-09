@@ -5,6 +5,15 @@ import numpy as np
 #FUNC EQUIVALENTE
 # 1/y² = 1/a² + 2bx
 
+
+'''
+O modelo a seguir se aplica a reações químicas de terceira ordem em reatores de batelada
+c=c011+2kc20t
+onde c=concentração (mg/L), c0=concentração inicial (mg/L), k=taxa de reação (L2/(mg2d)), e t=tempo (d). 
+Use uma transformação para linearizar essa equação, faça uma mudança de variáveis e use regressão linear para encontrar 
+os valores de c0 e k baseando-se nos dados a seguir: 
+'''
+
 def best_poly(x, y, grau=1):
     k = grau + 1
     A = [[0 for _ in range(k)] for _ in range(k)]
