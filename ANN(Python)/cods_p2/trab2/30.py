@@ -33,25 +33,31 @@ def finite_diffs(xs, ordem, x0, f):
         soma += ck * f(xk)
     return soma
 
+def taylor(xs, ordens, x0, f, values):
+    n = len(ordens)
+    for i in range(0, n):
+        p = f(x0)
+        for k in range(0, n):
+            p += (finite_diffs(xs, ordens[k], x0, f) / math.factorial(k+1))*((values[i] - x0)**(k+1))
+        erroN = math.sqrt(((f(values[i]) - p)**2))
+        print(f'{values[i]} = {p} e |f(x) - p3(x)| = {erroN}')
+
+
 def f(x):
     return x**2 * math.cos(x - 1) * math.exp(-3 * x ** 2)
 
+#Main:
+
 x0 = 0.751
-ordem = 5
-xs = [0.5398, 0.5933, 0.6142, 0.6887, 0.7159, 0.7769, 0.811, 0.8784, 0.9293, 0.9653]
+x = [0.5398, 0.5933, 0.6142, 0.6887, 0.7159, 0.7769, 0.811, 0.8784, 0.9293, 0.9653]
 values = [0.5827, 0.6043, 0.6053, 0.7018, 0.9361]
+order = 5
 
-ordem1 = 1
-ordem2 = 2
-ordem3 = 3
-ordem4 = 4
+ordens = []
+for i in range(1, order+1):
+    ordens.append(i)
 
-p = 0
-n = len(values)
-for i in range(n):
-    p = f(x0) + finite_diffs(xs, ordem1, x0, f)*(values[i] - x0) + ((finite_diffs(xs, ordem2, x0, f)/2) * ((values[i]-x0)**2)) + ((finite_diffs(xs, ordem3, x0, f)/6) * ((values[i]-x0)**3)) + ((finite_diffs(xs, ordem4, x0, f)/24) * ((values[i]-x0)**4)) + ((finite_diffs(xs, ordem, x0, f)/120) * ((values[i]-x0)**5)) 
-    erroN = math.sqrt(((f(values[i]) - p)**2))
-    print(f'{values[i]} = {p} e |f(x) - p3(x)| = {erroN}')
+taylor(x, ordens, x0, f, values)
 
 num_pontos = 0
 a = x0 - 0.25

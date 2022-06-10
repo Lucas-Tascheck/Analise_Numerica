@@ -3,7 +3,8 @@ import numpy as np
 import math
 
 '''
-De acordo com o teorema de Taylor, toda função n+1 vezes derivável pode ser aproximada por um polinômio de grau n, mais precisamente, se f é n+1 vezes derivável num ponto x0, então para todo x suficientemente próximo de x0, existe um c, entre x e x0, tal que
+De acordo com o teorema de Taylor, toda função n+1 vezes derivável pode ser aproximada por um polinômio de grau n, 
+mais precisamente, se f é n+1 vezes derivável num ponto x0, então para todo x suficientemente próximo de x0, existe um c, entre x e x0, tal que 
 '''
 
 def prod(lst):
@@ -32,23 +33,31 @@ def finite_diffs(xs, ordem, x0, f):
         soma += ck * f(xk)
     return soma
 
+def taylor(xs, ordens, x0, f, values):
+    n = len(ordens)
+    for i in range(0, n):
+        p = f(x0)
+        for k in range(0, n):
+            p += (finite_diffs(xs, ordens[k], x0, f) / math.factorial(k+1))*((values[i] - x0)**(k+1))
+        erroN = math.sqrt(((f(values[i]) - p)**2))
+        print(f'{values[i]} = {p} e |f(x) - p3(x)| = {erroN}')
+
+
 def f(x):
     return 3 * math.cos((x**2-1)**(1/3))
 
+#Main:
+
 x0 = 7.0387
-ordem = 3
-xs = [6.8623, 6.9069, 7.0047, 7.1073, 7.1782, 7.2468]
+order = 3
+x = [6.8623, 6.9069, 7.0047, 7.1073, 7.1782, 7.2468]
 values = [7.0648, 7.1019, 7.1576]
 
-ordem1 = 1
-ordem2 = 2
+ordens = []
+for i in range(1, order+1):
+    ordens.append(i)
 
-p = 0
-n = len(values)
-for i in range(n):
-    p = f(x0) + finite_diffs(xs, ordem1, x0, f)*(values[i] - x0) + ((finite_diffs(xs, ordem2, x0, f)/2) * ((values[i]-x0)**2)) + ((finite_diffs(xs, ordem, x0, f)/6) * ((values[i]-x0)**3))
-    erroN = math.sqrt(((f(values[i]) - p)**2))
-    print(f'{values[i]} = {p} e |f(x) - p3(x)| = {erroN}')
+taylor(x, ordens, x0, f, values)
 
 num_pontos = 0
 a = x0 - 0.25
