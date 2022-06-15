@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <math.h>
 
-#define ordemEerro 12
+#define ordemEerro 10
 // 4 pois a primeira coluna deve ter 'error_order / 2' elementos
-#define numElemsFirstCol 6
+#define numElemsFirstCol 10
 
 double trapz(double (*f)(double), double a, double b, int n){
     double soma = 0;
@@ -35,7 +35,7 @@ void romberg(double array[], int error_order){
 
 
 double f(double x){
-    return exp(-x*x);
+    return pow((x+1/x), 2);
 }
 
 int main(){
@@ -43,8 +43,8 @@ int main(){
     //exemplo
     //aprox a integral de exp(-x*x), de 0 a 1
 
-    double a = 0;
-    double b = 1;
+    double a = 0.92;
+    double b = 1.92;
     double h = 0.25;
     int n = (int)((b - a) / h);
 
