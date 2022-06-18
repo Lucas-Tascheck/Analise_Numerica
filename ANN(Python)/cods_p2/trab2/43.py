@@ -44,7 +44,7 @@ m = len(func)
 for xi in range(m):
     print(xi)
     hs = [h[xi] / 2 ** i for i in range(order[xi])]
-    col1 = [trapz(f=func[xi],a=a[xi],b=b[xi],hi) for hi in hs]
+    col1 = [trapz(func[xi],a[xi],b[xi],hi) for hi in hs]
     #print('F_1',col1)
     r = romberg(col1)
     print(f'{r}')

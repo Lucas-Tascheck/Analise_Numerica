@@ -1,32 +1,71 @@
 import math
 
-def romberg(col1):
-    col1 = [item for item in col1]
-    n = len(col1)
-    for j in range(n -1):
-        temp_col = [0] * (n - 1 - j)
-        for i in range(n - 1 - j):
-            power = j + 1
-            temp_col[i] = (4 ** power * col1[i+1] - col1[i]) / (4 ** power - 1)
-        col1[:n -1 - j] = temp_col
-        print(f'F_{j+2}',temp_col)
-    return col1[0]
-    
-def trapz(f, a, b, h):
-    n = int((b - a) / h)
+#define ordemEerro 4
+# 4 pois a primeira coluna deve ter 'error_order / 2' elementos
+#define numElemsFirstCol 2
+
+def trapz(f, a, b, n):
     soma = 0
-    for k in range(1, n):
-        soma += f(a + k * h)
-    return (h/2) * (f(a) + 2 * soma + f(b))
+    h = (b - a) / n
+    for i in range(1, n):
+        soma += f(a + i * h)
+    
+    soma *= 2
+    soma += f(a)
+    soma += f(b)
+    soma *= (0.5 * h)
+    return soma
+
+
+
+def romberg(array, error_order):
+
+    numCols = error_order // 2 - 1
+    for i in range(numCols - 1):
+        for j in range(numCols - 1):
+            numer = 2**((i + 1) * 2) * array[j + 1] - array[j]
+            denom = 2**((i + 1) * 2) - 1
+            array[j] = numer / denom
+    print(f'Aprox O(h^{error_order}) = {array[0]}')
+
 
 def f(x):
-    return math.exp(-x*x)
+  g = 9.81
+  m = 65.73
+  cd = 0.48
+  return math.sqrt((g*m) / cd)*math.tanh(math.sqrt((g*cd) / m) * x)
 
-a,b = [0, 1]
-h = 0.5
-k = 8
+def f2(x):
+    return math.sqrt(1+x**2)
 
-hs = [h / 2 ** i for i in range(k)]
-col1 = [trapz(f,a,b,hi) for hi in hs]
-print('F_1',col1)
-r = romberg(col1)
+def f3(x):
+    return math.cos(-x**2/3)
+
+def f4(x):
+    return (x+1/x)**2
+
+def f5(x):
+    return math.exp(-x**2)
+
+
+
+if __name__ == '__main__':
+    #exemplo
+    #aprox a integral de exp(-x*x), de 0 a 1
+
+
+  
+    a = [0]
+    b = [7.71]
+    order = [8]
+    h = [7.71/10]
+
+
+    tam = len(a)
+    for k in range(tam):
+        coluna_F1 = []
+        numElemsFirstCol = order[k] // 2
+        n = (int)((b[k] - a[k]) // h[k])
+        for i in range(numElemsFirstCol):
+            coluna_F1.append(trapz(f, a[k], b[k], 2**i * n))
+        romberg(coluna_F1, order[k])
