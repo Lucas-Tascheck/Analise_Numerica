@@ -36,7 +36,7 @@ subintervalos = [4, 18, 32, 60, 98, 108, 132, 152, 194, 212, 278]
 
 n = len(subintervalos)
 for i in range(n):
-    print(simps(f, intervalo[0], intervalo[1], subintervalos[i]))
+    print(f'{subintervalos[i]} = {simps(f, intervalo[0], intervalo[1], subintervalos[i])}')
 
 simpsPonto(x, y)
 

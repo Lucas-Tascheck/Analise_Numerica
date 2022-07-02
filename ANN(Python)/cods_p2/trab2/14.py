@@ -7,6 +7,8 @@ Encontre os coeficientes a e b da função taxa de crescimento da saturação y=
 (2.106,0.8735)...
 '''
 
+#func: 1 / y = 1 / a + b / a * 1 / x
+
 def best_poly(x, y, grau=1):
     k = grau + 1
     A = [[0 for _ in range(k)] for _ in range(k)]
@@ -24,6 +26,8 @@ def best_poly(x, y, grau=1):
             A[i][j] = cache[p]
         if i > 0:
             B.append(sum([yi * xi ** i for xi, yi in zip(x, y)]))
+    print(f'A = {A}')
+    print(f'B = {B}')
     return np.linalg.solve(A, B)
 
 
@@ -46,30 +50,27 @@ def modelo(x):
 
 
 if __name__ == '__main__':
-    
 
-    x = [2.106, 2.6708, 4.6467, 7.3103, 8.874, 9.0225, 10.8809, 12.2423, 14.8024, 16.0894, 18.241, 18.755]
-    y = [0.8735, 0.869, 1.2703, 1.5698, 1.6509, 1.7198, 1.7545, 1.8541, 1.9695, 1.9403, 2.0356, 2.0254]
-    values = [9.3423, 9.9071, 11.5857]
+    x = [0.5303, 0.8829, 2.2698, 3.3011, 3.4365, 4.2884, 5.3503, 6.6073, 6.7482, 8.0028, 8.6439, 9.6663]
+    y = [5.9852, 5.5825, 4.7437, 4.2911, 4.2483, 4.2374, 4.0669, 4.052, 4.0064, 4.5265, 4.7709, 5.2772]
+    values = [0.9109, 1.1905, 5.5313]
 
     y_ = []
-    for xi in y:
-        y_.append(1/xi)
+    for yi in y:
+        y_.append(1/yi)
     
     x_ = []
-    for yi in x:
-        x_.append(1/yi)
+    for xi in x:
+        x_.append(1/xi)
 
-    grau = 1
+    grau = 2
 
-    coefs = best_poly(x_, y_, grau)
+    coefs = best_poly(x, y, grau)
 
-    grau = 1
+    a0, a1, a2 = best_poly(x, y, grau)
 
-    a0, a1 = best_poly(x_, y_, grau)
-
-    a = 1/a0
-    b = a1 * a
+    #a = a0
+    #b = a1
 
 
     p = build_func(coefs)
@@ -79,11 +80,11 @@ if __name__ == '__main__':
     for xi in range(n):
         print(f'a{xi} = [{coefs[xi]}]')
 
-    print(f'a = {a} b = {b}')
+    #print(f'a = {a} b = {b}')
 
     n = len(values)
     for xi in range(n):
-        print(f'y(x{xi+1}) = {a*(values[xi]/(values[xi] + b))}')
+        print(f'y(x{xi+1}) = {a0 + a1*values[xi] + a2*(values[xi]**2)}')
 
 
     import matplotlib.pyplot as plt

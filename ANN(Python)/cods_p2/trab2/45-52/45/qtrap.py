@@ -12,9 +12,9 @@ def trapz(f, a, b, n):
     print(f'Area aproximadamente: {soma}')
 
 def f(x):
-    g = 9.81;
-    m = 62.29;
-    cd = 0.33;
+    g = 9.81
+    m = 62.29
+    cd = 0.33
     return math.sqrt((g*m) / cd) * math.tanh(math.sqrt((g*cd) / m) * x)
 
 def trapzPonto(x, y):

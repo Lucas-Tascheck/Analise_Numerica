@@ -67,8 +67,6 @@ if __name__ == '__main__':
 
     coefs = best_poly(x_, y_, grau)
 
-    grau = 1
-
     a0, a1 = best_poly(x_, y_, grau)
 
     a = 1/np.sqrt(a0)

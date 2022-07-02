@@ -8,6 +8,8 @@ Encontre os coeficientes a e b da função y=axebx que melhor se aproxima da seg
 (0.8185,2.6099)...
 '''
 
+#func: log(y) - log(x) = log(a) + bx
+
 def best_poly(x, y, grau=1):
     k = grau + 1
     A = [[0 for _ in range(k)] for _ in range(k)]

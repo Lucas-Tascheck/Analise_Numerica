@@ -7,6 +7,8 @@ Um pesquisador relatou os dados tabulados a seguir de um experimento realizado p
 de bactérias como uma função da concentração de oxigênio c (em mg/L).
 '''
 
+#func: 1/y = 1/a + b/a * 1/x²
+
 def best_poly(x, y, grau=1):
     k = grau + 1
     A = [[0 for _ in range(k)] for _ in range(k)]
@@ -63,8 +65,6 @@ if __name__ == '__main__':
     grau = 1
 
     coefs = best_poly(x_, y_, grau)
-
-    grau = 1
 
     a0, a1 = best_poly(x_, y_, grau)
 

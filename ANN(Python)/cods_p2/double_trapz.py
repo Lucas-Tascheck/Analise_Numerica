@@ -26,10 +26,11 @@ def double_trapz(f, a: float, b: float, c:float, d: float, n1: float, n2: float)
 def f(x, y):
     return math.exp(-(x + y)**2)
 
-intervalo1 = [-1.052, 1.048]
-intervalo2 = [-1.009, 0.993]
+intervalo1 = [-0.714, 1.035]
+intervalo2 = [-0.642, 0.518]
 n1 = 8
 n2 = 7
+
 
 r = double_trapz(f, intervalo1[0], intervalo1[1], intervalo2[0], intervalo2[1], n1, n2)
 
